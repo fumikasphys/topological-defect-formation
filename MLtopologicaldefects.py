@@ -56,7 +56,7 @@ model.add(Dense(X.shape[2]))
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Train the model
-history = model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=60, batch_size=10, verbose=1)
+history = model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=60, batch_size=10, verbose=2)
 
 
 
