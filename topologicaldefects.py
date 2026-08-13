@@ -55,12 +55,26 @@ for j in range(1, Nsamples+1):
   pi[0] = pi0
 
   for i in range(nt):
-    k1pi = -np.dot(eta,pi[i])+np.matmul(T(n0),phi[i])-(np.power(phi[i],3)-np.dot(eps(i*dt-1.5*tauQ),phi[i]))/2 +Noise[i] 
-    k2pi = -np.dot(eta,pi[i]+np.dot(dt,k1pi/2))+np.matmul(T(n0),phi[i])-(np.power(phi[i],3)-np.dot(eps((i+1/2)*dt-1.5*tauQ),phi[i]))/2 +Noise[i] 
-    k3pi = -np.dot(eta,pi[i]+np.dot(dt,k2pi/2))+np.matmul(T(n0),phi[i])-(np.power(phi[i],3)-np.dot(eps((i+1/2)*dt-1.5*tauQ),phi[i]))/2 +Noise[i]
-    k4pi = -np.dot(eta,pi[i]+k3pi)+np.matmul(T(n0),phi[i])-(np.power(phi[i],3)-np.dot(eps(i*dt-1.5*tauQ),phi[i]))/2 +Noise[i] 
+    k1phi = pi[i]
+    k1pi = -np.dot(eta,pi[i])+np.matmul(T(n0),phi[i])-(np.power(phi[i],3)-np.dot(eps(i*dt-1.5*tauQ),phi[i]))/2 +Noise[i]
+
+    phi2 = phi[i] + np.dot(dt,k1phi/2)
+    pi2 = pi[i] + np.dot(dt,k1pi/2)
+    k2phi = pi2
+    k2pi = -np.dot(eta,pi2)+np.matmul(T(n0),phi2)-(np.power(phi2,3)-np.dot(eps((i+1/2)*dt-1.5*tauQ),phi2))/2 +Noise[i]
+
+    phi3 = phi[i] + np.dot(dt,k2phi/2)
+    pi3 = pi[i] + np.dot(dt,k2pi/2)
+    k3phi = pi3
+    k3pi = -np.dot(eta,pi3)+np.matmul(T(n0),phi3)-(np.power(phi3,3)-np.dot(eps((i+1/2)*dt-1.5*tauQ),phi3))/2 +Noise[i]
+
+    phi4 = phi[i] + np.dot(dt,k3phi)
+    pi4 = pi[i] + np.dot(dt,k3pi)
+    k4phi = pi4
+    k4pi = -np.dot(eta,pi4)+np.matmul(T(n0),phi4)-(np.power(phi4,3)-np.dot(eps((i+1)*dt-1.5*tauQ),phi4))/2 +Noise[i]
+
     pi[i+1] = pi[i] + np.dot(dt,(k1pi +np.dot(2,k2pi)+ np.dot(2,k3pi) +k4pi)/6)
-    phi[i+1] = phi[i] + np.dot(dt,pi[i+1])
+    phi[i+1] = phi[i] + np.dot(dt,(k1phi +np.dot(2,k2phi)+ np.dot(2,k3phi) +k4phi)/6)
 
 
   Phi = []
