@@ -90,20 +90,12 @@ project/
     ├── j2.txt
     ├── j3.txt
     └── ...
-```
+
 
 The current data-generation script writes files as `j1.txt`, `j2.txt`, etc. in the working directory. Before running the machine-learning script, either move these files into the `j/` folder or modify the output line to save them directly there.
 
-For example:
 
-```python
-import os
 
-os.makedirs("j", exist_ok=True)
-
-with open(f"j/j{j}.txt", "w") as file:
-    ...
-```
 
 ## Neural-network model
 
