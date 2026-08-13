@@ -11,8 +11,7 @@ import tensorflow as tf
 from tensorflow.keras.layers import Layer
 import math
 
-def scaled_softsign(x):
-    return tf.math.sqrt(2.0) * tf.math.divide(x, 1 + tf.math.abs(x))
+
 
 
 vector_length =1024
@@ -57,7 +56,7 @@ model.add(Dense(X.shape[2]))
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Train the model
-history = model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=60, batch_size=10, verbose=50)
+history = model.fit(X_train, Y_train, validation_data=(X_val, Y_val), epochs=60, batch_size=10, verbose=1)
 
 
 
