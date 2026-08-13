@@ -155,7 +155,7 @@ pip install numpy matplotlib tensorflow scikit-learn
 Run
 
 ```bash
-python "topologicaldefects.py"
+python topologicaldefects.py
 ```
 
 Make sure the generated `j*.txt` files are placed in the `j/` folder.
