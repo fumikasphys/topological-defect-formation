@@ -1,4 +1,4 @@
-# Topological Defect Prediction with Recurrent Neural Networks
+# Topological Defect Configuration Prediction with RNN
 
 This repository contains Python scripts for generating topological-defect data from a one-dimensional stochastic Ginzburg–Landau model and training a neural network to predict the final defect configuration from a short time series.
 
