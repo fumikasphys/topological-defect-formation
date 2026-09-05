@@ -83,7 +83,7 @@ For example:
 ```text
 project/
 ├── README.md
-├── topologicaldefects(samples)(1).py
+├── topologicaldefects.py
 ├── MLtopologicaldefects.py
 └── j/
     ├── j1.txt
